@@ -1,13 +1,144 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>portifolio</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seu Nome - Desenvolvedor Full-Stack</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --text-color: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-color: #38bdf8;
+            --card-bg: #1e293b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        header {
+            margin-bottom: 3rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .tagline {
+            color: var(--accent-color);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        section {
+            margin-bottom: 3rem;
+        }
+
+        h2 {
+            font-size: 1.25rem;
+            margin-bottom: 1.2rem;
+            border-bottom: 1px solid #334155;
+            padding-bottom: 0.5rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background-color: var(--card-bg);
+            padding: 1.2rem;
+            border-radius: 8px;
+            transition: transform 0.2s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .project-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .links-list {
+            display: flex;
+            gap: 1rem;
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Jorge Lucas</h1>
+            <div class="tagline">Desenvolvedor Full-Stack Junior</div>
+            <p>Construindo aplicações web do zero, focando em lógica de backend limpa e interfaces funcionais.</p>
+            <ul class="links-list">
+                <li><a href="https://github.com/JorgeLucasPinheiro98" target="_blank">GitHub</a></li>
+                <li><a href="https://www.linkedin.com/in/jorge-lucas-pinheiro-61800123a/" target="_blank">LinkedIn</a></li>
+                <li><a href="mailto:betanh53@gmail.com">E-mail</a></li>
+            </ul>
+        </header>
+
+        <section>
+            <h2>Sobre</h2>
+            <p>
+                Sou Jorge Lucas, formado em Engenharia de Software, pai, marido e entusiasta da tecnologia. Após uma jornada de  disciplina e trabalho em equipe no Exército Brasileiro, encontrei no desenvolvimento de software o caminho para transformar ideias em soluções reais — e decidi seguir esse sonho.
+                <br>
+                Hoje, estou em transição de carreira, me dedicando integralmente ao universo da programação, com foco no desenvolvimento full stack. Tenho conhecimentos sólidos tanto em front-end quanto em back-end, buscando sempre unir lógica, performance e uma boa experiência para o usuário.
+            </p>
+        </section>
+
+        <section>
+            <h2>Trabalho</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>Cronos Pomodoro</h3>
+                    <p>Relogio pomodoro que marca os intervalos e avisa sobre os ciclos de trabalho </p>
+                    <a href="#" target="_blank">Ver repositório &rarr;</a>
+                </div>
+                <div class="project-card">
+                    <h3>Finanças Pessoais</h3>
+                    <p>Aplicativo completo de finanças, com gráfico e balanço mensal de juros e rendimentos</p>
+                    <a href="#" target="_blank">Ver repositório &rarr;</a>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
 </html>
