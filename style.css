@@ -125,3 +125,7 @@ header {
     height: 50px;
     margin: 10px;
 }
+
+#card_tecnologias {
+    display: flex;
+}
