@@ -108,23 +108,36 @@
             border-radius: 10px;
         }
 
-        #logo_tec {
-            width: 50px;
-            height: 50px;
-            margin: 10px;
-        }
-
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
+        }
+
+        .text_logo {
+           text-align: center; 
+        }
+
+        .container_logos {
+            height: 100px;
+            width: 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo_tec {
+            width: 50px;
+            height: 50px;
+            margin: 10px;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <img src="Imagem_profissional.jpg" alt="Jorge Lucas" id="img">
+            <img src="imagens/Imagem_profissional.jpg" alt="Jorge Lucas" id="img">
             <div>
             <h1>Jorge Lucas</h1>
                 <div class="tagline">Desenvolvedor Full-Stack Junior</div>
@@ -148,8 +161,10 @@
 
         <section>
             <h2>Tecnologias</h2>
-            <img src="logo_html.jpg" alt="logo_html" id="logo_tec">
-            <p>HTML</p>
+            <div class="container_logos">
+                <img src="imagens/logo_html.png" alt="logo_html" class="logo_tec">
+                <p class="text_logo">HTML</p>
+            </div>
         </section>
 
         <section>
