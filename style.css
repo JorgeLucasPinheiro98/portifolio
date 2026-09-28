@@ -17,27 +17,34 @@ body {
     background-color: var(--bg-color);
     color: var(--text-color);
     line-height: 1.6;
-    padding: 2rem 1rem;
+    padding: 1.5rem 1rem; /* Reduzido levemente para telas menores */
+    -webkit-tap-highlight-color: transparent; /* Remove o destaque cinza ao tocar no mobile */
 }
 
 .container {
     max-width: 680px;
+    width: 100%;
     margin: 0 auto;
 }
 
 header {
-    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column; /* Colunas no mobile para não quebrar */
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+    text-align: center;
 }
 
 h1 {
-    font-size: 2rem;
+    font-size: 1.75rem; /* Ajustado para não estourar em telas pequenas */
     font-weight: 700;
     margin-bottom: 0.5rem;
 }
 
 .tagline {
     color: var(--accent-color);
-    font-size: 1.1rem;
+    font-size: 1rem;
     margin-bottom: 1rem;
 }
 
@@ -47,7 +54,7 @@ p {
 }
 
 section {
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
 }
 
 h2 {
@@ -59,18 +66,22 @@ h2 {
 
 .projects-grid {
     display: grid;
-    gap: 1.5rem;
+    grid-template-columns: 1fr; /* Garante 1 coluna no mobile */
+    gap: 1.25rem;
 }
 
 .project-card {
     background-color: var(--card-bg);
-    padding: 1.2rem;
+    padding: 1.25rem;
     border-radius: 8px;
-    transition: transform 0.2s ease;
+    transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
-.project-card:hover {
-    transform: translateY(-3px);
+/* Reduz ou remove transform no toque para evitar pulos acidentais */
+@media (hover: hover) {
+    .project-card:hover {
+        transform: translateY(-3px);
+    }
 }
 
 .project-card h3 {
@@ -80,6 +91,7 @@ h2 {
 
 .links-list {
     display: flex;
+    flex-wrap: wrap; /* Quebra linha se houver muitos links */
     gap: 1rem;
     list-style: none;
     margin-top: 1.5rem;
@@ -88,44 +100,74 @@ h2 {
 a {
     color: var(--accent-color);
     text-decoration: none;
+    padding: 0.3rem 0; /* Aumenta a área de toque no celular */
 }
 
-a:hover {
+a:hover, a:active {
     text-decoration: underline;
 }
 
+/* Imagem responsiva */
 #img {
-    width: 250px;
-    height: 250px;
-    margin: 10px;
+    max-width: 100%;
+    width: 200px;
+    height: auto; /* Mantém a proporção e evita distorção */
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    margin: 0 auto;
     border-radius: 10px;
 }
 
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
 .text_logo {
-   text-align: center; 
+    text-align: center;
 }
 
 .container_logos {
-    height: 100px;
-    width: 100px;
+    height: auto;
+    min-width: 80px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 0.5rem;
 }
 
 .logo_tec {
-    width: 50px;
-    height: 50px;
-    margin: 10px;
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    margin: 0.5rem;
 }
 
 #card_tecnologias {
     display: flex;
+    flex-wrap: wrap; /* Evita estouro horizontal dos ícones */
+    justify-content: center;
+    gap: 1rem;
+}
+
+/* Adjusts para telas médias e desktop */
+@media (min-width: 640px) {
+    body {
+        padding: 2rem 1rem;
+    }
+
+    header {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    #img {
+        width: 250px;
+        margin: 10px;
+    }
+
+    #card_tecnologias {
+        justify-content: start;
+    }
 }
