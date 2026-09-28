@@ -15,3 +15,5 @@ function renderTecnologias(name, nameImagem) {
 renderTecnologias("HTML", "html")
 renderTecnologias("CSS", "css")
 renderTecnologias("JavaScript", "javascript")
+renderTecnologias("Typescript", "typescript")
+renderTecnologias("Node", "node")
