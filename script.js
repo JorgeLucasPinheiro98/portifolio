@@ -1,3 +1,20 @@
+const nameTecnologias = [{
+    name: "HTML",
+    nameImagem:"html"
+},{
+    name: "CSS",
+    nameImagem:"css"
+},{
+    name: "Javascript",
+    nameImagem:"javascript"
+},{
+    name: "Typescript",
+    nameImagem:"typescript"
+},{
+    name: "Node",
+    nameImagem:"node"
+}];
+
 function renderTecnologias(name, nameImagem) {
     const element = document.getElementById('card_tecnologias')
     const div = document.createElement("div");
@@ -12,8 +29,9 @@ function renderTecnologias(name, nameImagem) {
     div.appendChild(p)
     element.appendChild(div)
 }
-renderTecnologias("HTML", "html")
-renderTecnologias("CSS", "css")
-renderTecnologias("JavaScript", "javascript")
-renderTecnologias("Typescript", "typescript")
-renderTecnologias("Node", "node")
+
+function renderPage() {
+    for (let i = 0; i < nameTecnologias.length; i++) {
+        renderTecnologias(nameTecnologias[i].name, nameTecnologias[i].nameImagem)
+    }
+}

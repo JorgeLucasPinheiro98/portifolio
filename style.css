@@ -4,6 +4,9 @@
     --text-muted: #94a3b8;
     --accent-color: #38bdf8;
     --card-bg: #1e293b;
+    --border-color: #334155;
+    --button-bg: #334155;
+    --button-hover: #475569;
 }
 
 * {
@@ -17,8 +20,8 @@ body {
     background-color: var(--bg-color);
     color: var(--text-color);
     line-height: 1.6;
-    padding: 1.5rem 1rem; /* Reduzido levemente para telas menores */
-    -webkit-tap-highlight-color: transparent; /* Remove o destaque cinza ao tocar no mobile */
+    padding: 1.5rem 1rem;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .container {
@@ -27,25 +30,92 @@ body {
     margin: 0 auto;
 }
 
+/* --- Navegação e Header de Configurações --- */
+nav {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.link-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    justify-content: center;
+}
+
+.link-nav a {
+    color: var(--text-color);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
+}
+
+.link-nav a:hover {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+.config-page {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.config-page button {
+    background-color: var(--button-bg);
+    color: var(--text-color);
+    border: none;
+    padding: 0.35rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.config-page button:hover {
+    background-color: var(--button-hover);
+}
+
+.config-page button:active {
+    transform: scale(0.96);
+}
+
+/* --- Header Perfil --- */
 header {
     display: flex;
-    flex-direction: column; /* Colunas no mobile para não quebrar */
+    flex-direction: column;
     align-items: center;
     gap: 1.5rem;
     margin-bottom: 2.5rem;
     text-align: center;
 }
 
+#img {
+    max-width: 100%;
+    width: 180px;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 2px solid var(--border-color);
+}
+
 h1 {
-    font-size: 1.75rem; /* Ajustado para não estourar em telas pequenas */
+    font-size: 1.75rem;
     font-weight: 700;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
 }
 
 .tagline {
     color: var(--accent-color);
     font-size: 1rem;
-    margin-bottom: 1rem;
+    font-weight: 500;
+    margin-bottom: 0.75rem;
 }
 
 p {
@@ -53,6 +123,28 @@ p {
     margin-bottom: 1rem;
 }
 
+/* --- Links e Contatos --- */
+.links-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    list-style: none;
+    margin-top: 1rem;
+}
+
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+    padding: 0.3rem 0;
+    transition: color 0.2s ease;
+}
+
+a:hover, a:active {
+    text-decoration: underline;
+}
+
+/* --- Seções --- */
 section {
     margin-bottom: 2.5rem;
 }
@@ -60,13 +152,52 @@ section {
 h2 {
     font-size: 1.25rem;
     margin-bottom: 1.2rem;
-    border-bottom: 1px solid #334155;
+    border-bottom: 1px solid var(--border-color);
     padding-bottom: 0.5rem;
 }
 
+/* --- Cards de Tecnologias --- */
+#card_tecnologias {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.container_logos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 80px;
+    padding: 0.75rem;
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    border: 1px solid transparent;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.container_logos:hover {
+    border-color: var(--border-color);
+}
+
+.logo_tec {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    margin-bottom: 0.5rem;
+}
+
+.text_logo {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-align: center;
+}
+
+/* --- Grid de Projetos --- */
 .projects-grid {
     display: grid;
-    grid-template-columns: 1fr; /* Garante 1 coluna no mobile */
+    grid-template-columns: 1fr;
     gap: 1.25rem;
 }
 
@@ -74,14 +205,8 @@ h2 {
     background-color: var(--card-bg);
     padding: 1.25rem;
     border-radius: 8px;
-    transition: transform 0.2s ease, background-color 0.2s ease;
-}
-
-/* Reduz ou remove transform no toque para evitar pulos acidentais */
-@media (hover: hover) {
-    .project-card:hover {
-        transform: translateY(-3px);
-    }
+    border: 1px solid transparent;
+    transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
 .project-card h3 {
@@ -89,85 +214,53 @@ h2 {
     margin-bottom: 0.4rem;
 }
 
-.links-list {
-    display: flex;
-    flex-wrap: wrap; /* Quebra linha se houver muitos links */
-    gap: 1rem;
-    list-style: none;
-    margin-top: 1.5rem;
+.project-card p {
+    font-size: 0.95rem;
+    margin-bottom: 0.8rem;
 }
 
-a {
-    color: var(--accent-color);
-    text-decoration: none;
-    padding: 0.3rem 0; /* Aumenta a área de toque no celular */
+@media (hover: hover) {
+    .project-card:hover {
+        transform: translateY(-3px);
+        border-color: var(--border-color);
+    }
 }
 
-a:hover, a:active {
-    text-decoration: underline;
-}
-
-/* Imagem responsiva */
-#img {
-    max-width: 100%;
-    width: 200px;
-    height: auto; /* Mantém a proporção e evita distorção */
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
-    margin: 0 auto;
-    border-radius: 10px;
-}
-
-.text_logo {
-    text-align: center;
-}
-
-.container_logos {
-    height: auto;
-    min-width: 80px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 0.5rem;
-}
-
-.logo_tec {
-    width: 40px;
-    height: 40px;
-    object-fit: contain;
-    margin: 0.5rem;
-}
-
-#card_tecnologias {
-    display: flex;
-    flex-wrap: wrap; /* Evita estouro horizontal dos ícones */
-    justify-content: center;
-    gap: 1rem;
-}
-
-/* Adjusts para telas médias e desktop */
+/* --- Responsividade Desktop --- */
 @media (min-width: 640px) {
     body {
-        padding: 2rem 1rem;
+        padding: 2.5rem 1rem;
+    }
+
+    nav {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .link-nav {
+        justify-content: start;
     }
 
     header {
         flex-direction: row;
-        justify-content: space-between;
         text-align: left;
-    }
-
-    h1 {
-        font-size: 2rem;
+        align-items: center;
     }
 
     #img {
-        width: 250px;
-        margin: 10px;
+        width: 200px;
+    }
+
+    .links-list {
+        justify-content: start;
     }
 
     #card_tecnologias {
         justify-content: start;
+    }
+
+    .projects-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     }
 }
