@@ -5,68 +5,95 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jorge Lucas - Desenvolvedor Full-Stack</title>
     <link rel="stylesheet" href="style.css">
+
+    <!-- Script Inline Anti-Flicker: define o tema e o idioma antes do render da página -->
+    <script>
+        (function () {
+            // Tema
+            const savedTheme = localStorage.getItem('theme');
+            const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            } else if (savedTheme === 'light') {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+
+            // Idioma
+            const savedLang = localStorage.getItem('lang') || 'pt';
+            document.documentElement.setAttribute('lang', savedLang === 'pt' ? 'pt-BR' : savedLang);
+        })();
+    </script>
 </head>
 <body onload="renderPage()">
     <div class="container">
+        <!-- Navegação e Header de Configurações -->
         <nav>
             <div class="link-nav">
-                <a href="#">Sobre</a>
-                <a href="#">Tecnologias</a>
-                <a href="#">Projetos</a>
-                <a href="#">Contatos</a>
-                <a href="#">Home</a>
+                <a href="#sobre" data-i18n="nav_about">Sobre</a>
+                <a href="#tecnologias" data-i18n="nav_tech">Tecnologias</a>
+                <a href="#projetos" data-i18n="nav_projects">Projetos</a>
+                <a href="#contatos" data-i18n="nav_contacts">Contatos</a>
+                <a href="#" data-i18n="nav_home">Home</a>
             </div>
             <div class="config-page">
-                <button>Dark</button>
-                <button>PT</button>
-                <button>FR</button>
-                <button>EN</button>
+                <button id="theme-toggle-btn" onclick="changeTheme()" aria-label="Alternar Tema">Dark</button>
+                <button data-lang-btn="pt" onclick="changeLanguage('pt')">PT</button>
+                <button data-lang-btn="fr" onclick="changeLanguage('fr')">FR</button>
+                <button data-lang-btn="en" onclick="changeLanguage('en')">EN</button>
             </div>
         </nav>
-        <header>
+
+        <!-- Header Perfil -->
+        <header id="sobre">
             <img src="imagens/Imagem_profissional.jpg" alt="Jorge Lucas" id="img">
             <div>
-            <h1>Jorge Lucas</h1>
-                <div class="tagline">Desenvolvedor Full-Stack Junior</div>
-                <p>Construindo aplicações web do zero, focando em lógica de backend limpa e interfaces funcionais.</p>
-                <ul class="links-list">
-                    <li><a href="https://github.com/JorgeLucasPinheiro98" target="_blank">GitHub</a></li>
-                    <li><a href="https://www.linkedin.com/in/jorge-lucas-pinheiro-61800123a/" target="_blank">LinkedIn</a></li>
-                    <li><a href="mailto:betanh53@gmail.com">E-mail</a></li>
+                <h1>Jorge Lucas</h1>
+                <div class="tagline" data-i18n="header_tagline">Desenvolvedor Full-Stack Junior</div>
+                <p data-i18n="header_description">Construindo aplicações web do zero, focando em lógica de backend limpa e interfaces funcionais.</p>
+                <ul class="links-list" id="contatos">
+                    <li><a href="https://github.com/JorgeLucasPinheiro98" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                    <li><a href="https://www.linkedin.com/in/jorge-lucas-pinheiro-61800123a/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                    <li><a href="mailto:betanh53@gmail.com" data-i18n="contact_email">E-mail</a></li>
                 </ul>
             </div>
         </header>
 
-        <section>
-            <h2>Sobre</h2>
-            <p>
-                Sou Jorge Lucas, formado em Engenharia de Software, pai, marido e entusiasta da tecnologia. Após uma jornada de  disciplina e trabalho em equipe no Exército Brasileiro, encontrei no desenvolvimento de software o caminho para transformar ideias em soluções reais — e decidi seguir esse sonho.
-                <br>
-                Hoje, estou em transição de carreira, me dedicando integralmente ao universo da programação, com foco no desenvolvimento full stack. Tenho conhecimentos sólidos tanto em front-end quanto em back-end, buscando sempre unir lógica, performance e uma boa experiência para o usuário.
-            </p>
-        </section>
+        <main>
+            <!-- Seção Sobre -->
+            <section>
+                <h2 data-i18n="section_about_title">Sobre</h2>
+                <p data-i18n="section_about_text">
+                    Sou Jorge Lucas, formado em Engenharia de Software, pai, marido e entusiasta da tecnologia. Após uma jornada de disciplina e trabalho em equipe no Exército Brasileiro, encontrei no desenvolvimento de software o caminho para transformar ideias em soluções reais — e decidi seguir esse sonho.
+                    <br><br>
+                    Hoje, estou em transição de carreira, me dedicando integralmente ao universo da programação, com foco no desenvolvimento full stack. Tenho conhecimentos sólidos tanto em front-end quanto em back-end, buscando sempre unir lógica, performance e uma boa experiência para o usuário.
+                </p>
+            </section>
 
-        <section>
-            <h2>Tecnologias</h2>
-            <div id="card_tecnologias"></div>
-        </section>
+            <!-- Seção Tecnologias -->
+            <section id="tecnologias">
+                <h2 data-i18n="section_tech_title">Tecnologias</h2>
+                <div id="card_tecnologias"></div>
+            </section>
 
-        <section>
-            <h2>Trabalho</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <h3>Cronos Pomodoro</h3>
-                    <p>Relogio pomodoro que marca os intervalos e avisa sobre os ciclos de trabalho </p>
-                    <a href="#" target="_blank">Ver repositório &rarr;</a>
+            <!-- Seção Projetos -->
+            <section id="projetos">
+                <h2 data-i18n="section_projects_title">Trabalho</h2>
+                <div class="projects-grid">
+                    <article class="project-card">
+                        <h3>Cronos Pomodoro</h3>
+                        <p data-i18n="project_pomodoro_desc">Relógio pomodoro que marca os intervalos e avisa sobre os ciclos de trabalho.</p>
+                        <a href="https://github.com/JorgeLucasPinheiro98" target="_blank" rel="noopener noreferrer" data-i18n="view_repo">Ver repositório &rarr;</a>
+                    </article>
+                    <article class="project-card">
+                        <h3 data-i18n="project_finances_title">Finanças Pessoais</h3>
+                        <p data-i18n="project_finances_desc">Aplicativo completo de finanças, com gráfico e balanço mensal de juros e rendimentos.</p>
+                        <a href="https://github.com/JorgeLucasPinheiro98" target="_blank" rel="noopener noreferrer" data-i18n="view_repo">Ver repositório &rarr;</a>
+                    </article>
                 </div>
-                <div class="project-card">
-                    <h3>Finanças Pessoais</h3>
-                    <p>Aplicativo completo de finanças, com gráfico e balanço mensal de juros e rendimentos</p>
-                    <a href="#" target="_blank">Ver repositório &rarr;</a>
-                </div>
-            </div>
-        </section>
+            </section>
+        </main>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>

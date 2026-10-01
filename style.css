@@ -1,3 +1,4 @@
+/* --- Variaveis Globais (Tema Escuro - Padrão) --- */
 :root {
     --bg-color: #0f172a;
     --text-color: #f8fafc;
@@ -7,6 +8,32 @@
     --border-color: #334155;
     --button-bg: #334155;
     --button-hover: #475569;
+}
+
+/* --- Tema Claro --- */
+[data-theme="light"] {
+    --bg-color: #f8fafc;
+    --text-color: #0f172a;
+    --text-muted: #64748b;
+    --accent-color: #0284c7;
+    --card-bg: #ffffff;
+    --border-color: #e2e8f0;
+    --button-bg: #e2e8f0;
+    --button-hover: #cbd5e1;
+}
+
+/* Suporte automático ao tema do sistema caso não haja data-theme definido */
+@media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+        --bg-color: #f8fafc;
+        --text-color: #0f172a;
+        --text-muted: #64748b;
+        --accent-color: #0284c7;
+        --card-bg: #ffffff;
+        --border-color: #e2e8f0;
+        --button-bg: #e2e8f0;
+        --button-hover: #cbd5e1;
+    }
 }
 
 * {
@@ -22,6 +49,8 @@ body {
     line-height: 1.6;
     padding: 1.5rem 1rem;
     -webkit-tap-highlight-color: transparent;
+    /* Transição suave ao alternar de tema */
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .container {
@@ -38,6 +67,7 @@ nav {
     margin-bottom: 2rem;
     padding-bottom: 1rem;
     border-bottom: 1px solid var(--border-color);
+    transition: border-color 0.3s ease;
 }
 
 .link-nav {
@@ -74,7 +104,7 @@ nav {
     font-size: 0.85rem;
     font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.2s ease, transform 0.1s ease;
+    transition: background-color 0.2s ease, transform 0.1s ease, color 0.2s ease;
 }
 
 .config-page button:hover {
@@ -103,6 +133,7 @@ header {
     object-fit: cover;
     border-radius: 12px;
     border: 2px solid var(--border-color);
+    transition: border-color 0.3s ease;
 }
 
 h1 {
@@ -116,11 +147,13 @@ h1 {
     font-size: 1rem;
     font-weight: 500;
     margin-bottom: 0.75rem;
+    transition: color 0.3s ease;
 }
 
 p {
     color: var(--text-muted);
     margin-bottom: 1rem;
+    transition: color 0.3s ease;
 }
 
 /* --- Links e Contatos --- */
@@ -154,6 +187,7 @@ h2 {
     margin-bottom: 1.2rem;
     border-bottom: 1px solid var(--border-color);
     padding-bottom: 0.5rem;
+    transition: border-color 0.3s ease;
 }
 
 /* --- Cards de Tecnologias --- */
@@ -173,12 +207,12 @@ h2 {
     padding: 0.75rem;
     background-color: var(--card-bg);
     border-radius: 8px;
-    border: 1px solid transparent;
-    transition: border-color 0.2s ease, transform 0.2s ease;
+    border: 1px solid var(--border-color);
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
 }
 
 .container_logos:hover {
-    border-color: var(--border-color);
+    border-color: var(--accent-color);
 }
 
 .logo_tec {
@@ -192,6 +226,7 @@ h2 {
     font-size: 0.85rem;
     color: var(--text-muted);
     text-align: center;
+    transition: color 0.3s ease;
 }
 
 /* --- Grid de Projetos --- */
@@ -205,8 +240,8 @@ h2 {
     background-color: var(--card-bg);
     padding: 1.25rem;
     border-radius: 8px;
-    border: 1px solid transparent;
-    transition: transform 0.2s ease, border-color 0.2s ease;
+    border: 1px solid var(--border-color);
+    transition: background-color 0.3s ease, transform 0.2s ease, border-color 0.3s ease;
 }
 
 .project-card h3 {
@@ -222,7 +257,7 @@ h2 {
 @media (hover: hover) {
     .project-card:hover {
         transform: translateY(-3px);
-        border-color: var(--border-color);
+        border-color: var(--accent-color);
     }
 }
 
